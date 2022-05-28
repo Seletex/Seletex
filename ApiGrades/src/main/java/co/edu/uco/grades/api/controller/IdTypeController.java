@@ -125,7 +125,7 @@ public class IdTypeController {
 		response.setMessages(messages);
 		responseEntity = new ResponseEntity<Response<IdTypeDTO>>(statusCode);
 		return responseEntity;
-		System.out.println("Estoy en consultar por id");
+		
 		
 		
 	}
