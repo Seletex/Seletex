@@ -95,7 +95,7 @@ public class IdTypeAzureSqlDAO extends ConnectionSQL implements IdTypeDAO {
 		
 		if(!UtilObject.getUtilObject().isNull(idType)) {
 			
-			if(UtilNumeric.getUtilNumeric().isGreaterThan(idType.getId(), 0)) {
+			if(UtilNumeric.getUtilObject().isGreatherThan(idType.getId(), 0)) {
 				
 				sb.append("WHERE id = ? ");
 				parameters.add(idType.getId());

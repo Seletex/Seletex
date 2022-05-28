@@ -1,13 +1,28 @@
 package co.edu.uco.grades.data.dao.azuresql;
 
-public class SessionAzureSqlDAO extends ConnectionSQL implements SessionDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-	protected SessionAzureSqlDAO(Connection connection) {
+import co.edu.uco.crosscutting.util.numeric.UtilNumeric;
+import co.edu.uco.crosscutting.util.object.UtilObject;
+import co.edu.uco.crosscutting.util.text.UtilText;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
+import co.edu.uco.grades.data.dao.SessionDAO;
+import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
+import co.edu.uco.grades.dto.SessionDTO;
+
+public class SessionAzureSQLDAO extends ConnectionSQL implements SessionDAO {
+
+	protected SessionAzureSQLDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
-	public static SessionAzureSqlDAO build(Connection connection) {
-		return new SessionAzureSqlDAO(connection);
+	public static SessionAzureSQLDAO build(Connection connection) {
+		return new SessionAzureSQLDAO(connection);
 	}
 
 	@Override
@@ -159,6 +174,16 @@ public class SessionAzureSqlDAO extends ConnectionSQL implements SessionDAO {
 		}
 		return results;
 
+	}
+	@Override
+	public void create(SessionDTO session) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -1,14 +1,29 @@
 package co.edu.uco.grades.data.dao.azuresql;
 
-public class ProfessorAzureSqlDAO extends ConnectionSQL implements ProfessorDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-	protected ProfessorAzureSqlDAO(Connection connection) {
+import co.edu.uco.crosscutting.util.numeric.UtilNumeric;
+import co.edu.uco.crosscutting.util.object.UtilObject;
+import co.edu.uco.crosscutting.util.text.UtilText;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
+import co.edu.uco.grades.data.dao.ProfessorDAO;
+import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
+import co.edu.uco.grades.dto.ProfessorDTO;
+
+public class ProfessorAzureSQLDAO extends ConnectionSQL implements ProfessorDAO {
+
+	protected ProfessorAzureSQLDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 
-	public static ProfessorAzureSqlDAO build(Connection connection) {
-		return new ProfessorAzureSqlDAO(connection);
+	public static ProfessorAzureSQLDAO build(Connection connection) {
+		return new ProfessorAzureSQLDAO(connection);
 	}
 
 	@Override

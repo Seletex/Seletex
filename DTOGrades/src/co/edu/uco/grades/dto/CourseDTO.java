@@ -10,11 +10,11 @@ public class CourseDTO {
 	private Date finalDate;
 	private CourseDTO(int id, SubjectDTO subject, ProfessorDTO professor, Date initialDate, Date finalDate) {
 		super();
-		this.id = id;
-		this.subject = subject;
-		this.professor = professor;
-		this.initialDate = initialDate;
-		this.finalDate = finalDate;
+		setId( id);
+		setSubject( subject);
+		setProfessor( professor);
+		setInitialDate( initialDate);
+		setFinalDate(finalDate);
 	}
 	public CourseDTO() {
 		super();
@@ -23,7 +23,7 @@ public class CourseDTO {
 		return id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.id = (id <0) ? 0: id;
 	}
 	public SubjectDTO getSubject() {
 		return subject;

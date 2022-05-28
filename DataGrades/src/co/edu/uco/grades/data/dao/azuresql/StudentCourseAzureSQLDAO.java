@@ -1,13 +1,26 @@
 package co.edu.uco.grades.data.dao.azuresql;
 
-public class StudentCourseAzureSqlDAO extends ConnectionSQL implements StudentCourseDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
-	protected StudentCourseAzureSqlDAO(Connection connection) {
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import co.edu.uco.grades.crosscutting.exception.GradesException;
+import co.edu.uco.grades.data.dao.StudentCourseDAO;
+import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
+import co.edu.uco.grades.dto.StudentCourseDTO;
+
+public class StudentCourseAzureSQLDAO extends ConnectionSQL implements StudentCourseDAO {
+
+	protected StudentCourseAzureSQLDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
-	public static StudentCourseAzureSqlDAO build(Connection connection) {
-		return  new StudentCourseAzureSqlDAO(connection);
+	public static StudentCourseAzureSQLDAO build(Connection connection) {
+		return  new StudentCourseAzureSQLDAO(connection);
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class SubjectDTO {
 		setName(name);
 	}
 
-	private SubjectDTO() {
+	public SubjectDTO() {
 		super();
 		setName(UtilText.EMPTY);
 	}

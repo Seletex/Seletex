@@ -1,23 +1,29 @@
 package co.edu.uco.grades.data.dao.azuresql;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uco.crosscutting.util.numeric.UtilNumeric;
+import co.edu.uco.crosscutting.util.object.UtilObject;
 import co.edu.uco.crosscutting.util.text.UtilText;
 import co.edu.uco.grades.crosscutting.exception.GradesException;
+
+import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
 import co.edu.uco.grades.dto.CourseDTO;
+import co.edu.uco.grades.data.dao.CourseDAO;
 
-public class CourseAzureSqlDAO extends ConnectionSQL implements CourseDAO{
+public class CourseAzureSQLDAO extends ConnectionSQL implements CourseDAO{
 
-	protected CourseAzureSqlDAO(Connection connection) {
+	protected CourseAzureSQLDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
-	public static CourseAzureSqlDAO build(Connection connection) {
-		return new CourseAzureSqlDAO(connection);
+	public static CourseAzureSQLDAO build(Connection connection) {
+		return new CourseAzureSQLDAO(connection);
 	}
 
 	@Override
@@ -27,7 +33,7 @@ public class CourseAzureSqlDAO extends ConnectionSQL implements CourseDAO{
 		try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
 			preparedStatement.setInt(1, course.getSubject().getId());
-			preparedStatement.setInt(1, course.getProfesor().getId());
+			preparedStatement.setInt(1, course.getProfessor().getId());
 			preparedStatement.setDate(1, course.getInitialDate());
 			preparedStatement.setDate(1, course.getFinalDate());
 			preparedStatement.executeUpdate();
@@ -64,10 +70,10 @@ public class CourseAzureSqlDAO extends ConnectionSQL implements CourseDAO{
 				sb.append("subject = ? ");
 				parameters.add(course.getSubject().getId());
 			}
-			if (!UtilNumeric.getUtilObject().isPositive(course.getProfesor().getId())){
+			if (!UtilNumeric.getUtilObject().isPositive(course.getProfessor().getId())){
 				sb.append(setWhere ? "WHERE " : "AND");
 				sb.append("professor = ? ");
-				parameters.add(course.getProfesor().getId());
+				parameters.add(course.getProfessor().getId());
 			}
 			if (!UtilObject.getUtilObject().isNull(course.getInitialDate())){
 				sb.append(setWhere ? "WHERE " : "AND");
